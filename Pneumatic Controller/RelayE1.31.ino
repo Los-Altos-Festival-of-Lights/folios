@@ -69,7 +69,7 @@ void loop() {
   Serial.println(num_channels);*/
 
   //Print Channel Data
-  if (num_channels) {
+  /*if (num_channels) {
 
     Serial.print(F("Universe: "));
     Serial.println(e131.universe);
@@ -87,10 +87,10 @@ void loop() {
       Serial.println(e131.data[i]);
     }
   }
-  Serial.println("");
+  Serial.println("");*/
 
   for(int i=0; i<pins; i++){
-    if(e131.data[ports[i][1]] > 200){
+    if(e131.data[ports[i][1]] < 200){
       digitalWrite(ports[i][0], HIGH);     
     }
     else{
@@ -98,6 +98,6 @@ void loop() {
     }
   }
 
-  delay(5);  
+  delay(25);  
 }
 
