@@ -23,6 +23,7 @@ int pins = 18;
 //CONFIGURE: Update Values In Array With Format Below
 
 //Format: {Arduino Digital Output Pin, xLights Sequence Channel}
+//Note: This Code Defaults To Using Universe 1
 //Note: The Arduino Ethernet Shield Uses Pins 1, 4, and 10-13 For Communication To The Arduino. You Cannot Use These Pins For Relays
 
 int ports[18][2] = {
@@ -48,6 +49,28 @@ int ports[18][2] = {
 
 };
 
+/*
+1: Singer Foot
+2: Singer Mic
+3: Singer Head Left
+4: Singer Head Right
+5: Singer Body  Right
+6: Singer Mouth
+7: Floor Guitar Arm
+8: Floor Guitar Head Left
+9: Floor Guitar Head Right
+10: Floor Guitar Body
+11: Floor Guitar Mouth
+12: Drummer Left Hand (Drum)
+13: Drummer Right Hand (Cymbal)
+14: Drummer Mouth
+15: Drummer Body
+16: Guitar On Stand Arm
+17: Guitar On Stand Body
+18: Guitar On Stand Mouth
+Note: Numbers 4&5, and Numbers 8&9, Can Never Be Active At The Same Time Because They Contradict Each Other
+*/
+
 
 void setup() {
 
@@ -72,7 +95,7 @@ void setup() {
 
 void loop() {
 
-  //Reset Ethernet Connection If Dropper
+  //Reset Ethernet Connection If Dropped
   if(Ethernet.localIP() != ipAdd){
     e131.begin(mac, ip, gateway, subnet, dns);
   }
